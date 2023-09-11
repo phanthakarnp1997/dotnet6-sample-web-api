@@ -26,10 +26,9 @@ namespace Sample.Infrastructure.Middleware
             {
                 await _next(context);
 
-                // Check for 401 status code in the response and modify it
                 if (context.Response.StatusCode == StatusCodes.Status401Unauthorized)
                 {
-                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                    context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                     context.Response.ContentType = "application/json";
 
 
